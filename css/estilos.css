@@ -161,7 +161,6 @@ header .logo_header {
 .hero_container .hero {
   width: 70%;
   text-align: center;
-  z-index: 10;
 }
 
 #hero-home {
@@ -179,7 +178,7 @@ header .logo_header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/hero.jpg);
   background-size: cover;
   animation: kenBurns 30s infinite;
-  z-index: -1;
+  z-index: 0;
 }
 
 /* ------------ CONTENIDO DEL SITIO ------------ */
@@ -341,7 +340,7 @@ footer {
   left: -10%;
   width: 120%;
   height: 120%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/nosotros.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/nosotros.jpg);
   background-size: cover;
   animation: kenBurns 30s infinite;
   z-index: 0;
@@ -365,7 +364,7 @@ footer {
   left: -10%;
   width: 120%;
   height: 120%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/menu-hero.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/menu-hero.jpg);
   background-size: cover;
   animation: kenBurns 30s infinite;
   z-index: 0;
@@ -389,7 +388,7 @@ footer {
   left: -10%;
   width: 120%;
   height: 120%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/reservas.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/reservas.jpg);
   background-size: cover;
   animation: kenBurns 30s infinite;
   z-index: 0;
@@ -413,7 +412,7 @@ footer {
   left: -10%;
   width: 120%;
   height: 120%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/contacto.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/contacto.jpg);
   background-size: cover;
   animation: kenBurns 30s infinite;
   z-index: 0;

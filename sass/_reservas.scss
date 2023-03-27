@@ -11,7 +11,7 @@
     left: -10%;
     width: 120%;
     height: 120%;
-    background-image: variables.$heroOverlay, url("/img/reservas.jpg");
+    background-image: variables.$heroOverlay, url(../img/reservas.jpg);
     background-size: cover;
     animation: kenBurns 30s infinite;
     z-index: 0;
