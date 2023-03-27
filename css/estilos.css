@@ -161,6 +161,7 @@ header .logo_header {
 .hero_container .hero {
   width: 70%;
   text-align: center;
+  z-index: 1;
 }
 
 #hero-home {
