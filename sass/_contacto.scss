@@ -1,5 +1,18 @@
 @use "variables";
 /* ------------ CONTACTO HERO ------------ */
-#hero-contacto{
-    background-image: variables.$heroOverlay, url("../img/contacto.jpg");
+#hero-contacto {
+    position: relative;
+    overflow: hidden;
+}
+#hero-contacto:before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: variables.$heroOverlay, url("/img/contacto.jpg");
+    background-size: cover;
+    animation: kenBurns 30s infinite;
+    z-index: 0;
 }

@@ -1,10 +1,12 @@
 @use "variables";
-*{
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    text-decoration: none;
+/* ------------ MIXING ------------ */
+@mixin flexible( $dis , $direction , $corte , $just , $align ){
+    display         : $dis;
+    flex-flow       : $direction $corte;
+    justify-content : $just;
+    align-items     : $align;
 }
+/* ------------ MAIN CONTAINER ------------ */
 .contenedorPadre{
     display: grid;
     grid-template-areas:
@@ -34,13 +36,11 @@ header {
         height: 8vh;
     }
 }
+
 /* ------------ HERO BANNER ------------ */
 .hero_container {
 grid-area: hero;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-wrap: wrap;
+@include flexible( flex , column , wrap , center , center );
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
@@ -49,10 +49,24 @@ min-height: 90vh;
     .hero {
         width: 70%;
         text-align: center;
+        z-index: 10;
     }
 }
-#hero-home{
-    background-image: variables.$heroOverlay, url("../img/hero.jpg");
+#hero-home {
+    position: relative;
+    overflow: hidden;
+}
+#hero-home:before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: variables.$heroOverlay, url("/img/hero.jpg");
+    background-size: cover;
+    animation: kenBurns 30s infinite;
+    z-index: 0;
 }
 /* ------------ CONTENIDO DEL SITIO ------------ */
 .content {
@@ -62,16 +76,10 @@ min-height: 90vh;
     background-repeat: repeat;
     .boxes {
         grid-area: boxes;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-wrap: wrap;
+        @include flexible( flex , row , wrap , space-evenly , center );
         padding: 5vh 0px 5vh 0px;
         .box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
+            @include flexible( flex , column , nowrap , space-evenly , center );
             width: 33vh;
             min-height: 33vh;
             background-color: variables.$blue;
@@ -121,6 +129,9 @@ min-height: 90vh;
     font-stretch: expanded;
 }
 /* ------------ ESTILO DE TITULOS ------------ */
+body{
+    font-family: variables.$Roboto;
+}
 h1{
     font-family: variables.$Raleway;
     font-weight: bold;
@@ -149,62 +160,6 @@ h5{
     font-weight: 400;
     font-size: 1.5vh;
 }
-/* ------------ BOTONES Y LINK ------------ */
-.button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: variables.$red;
-    border: none;
-    border-radius: 5px;
-    color: variables.$white;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-        &:hover{
-            background-color:variables.$white;
-            box-shadow: variables.$buttonShadow;
-            color: variables.$red;
-            font-weight: 600;
-    }
-}
-.heroButtonContainer{
-    display: flex;
-    justify-content: center;
-    .button-hero{
-        background-image: variables.$pttA;
-        background-repeat: repeat;
-        background-size: 90vh;
-        margin: 1vh;
-        width: 20vh;
-        height: 6vh;
-    }
-}
-.button-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 11vh;
-    border-radius: 3px;
-}
-a:link {
-    text-decoration: none;
-    font-family: variables.$Raleway;
-    font-weight: 300;
-    font-size: 1.8vh;
-    color: variables.$white;
-        &:visited {
-            color: variables.$red;
-        }
-        &:hover {
-        color: variables.$red;
-        font-weight: 400;
-        }
-        &:active {
-            color: variables.$blue;
-        }
-}
 /* ------------ ESTILOS DE FOOTER ------------ */
 footer {
     grid-area: footer;
@@ -213,11 +168,8 @@ footer {
     color: variables.$white;
 }
 .pie {
+    @include flexible( flex , row , wrap , space-evenly , center );
     padding: 15px 15px 15px 15px;
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
     padding: 1vh;
 }
 .direccion {

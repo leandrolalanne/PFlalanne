@@ -1,10 +1,123 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-  text-decoration: none;
+/* ------------ CSS RESET ------------ */
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ------------ LINKS ------------ */
+a:link {
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  color: #f5f6fa;
+}
+
+a:visited {
+  color: #f5f6fa;
+}
+
+a:hover {
+  color: #b2bec3;
+}
+
+a:active {
+  color: #f5f6fa;
+}
+
+/* ------------ BOTONES ------------ */
+.button, .button-box, .heroButtonContainer .button-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d63031;
+  border: none;
+  border-radius: 5px;
+  color: #f5f6fa;
+  margin: 0.5vh 0 0.5vh 0;
+  height: 3vh;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button:hover, .button-box:hover, .heroButtonContainer .button-hero:hover {
+  background-color: #f5f6fa;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+  color: #d63031;
+  font-weight: 400;
+}
+
+.heroButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+.heroButtonContainer .button-hero {
+  background-image: url(../img/pttA.svg);
+  background-repeat: repeat;
+  background-size: 90vh;
+  margin: 1vh;
+  width: 20vh;
+  height: 6vh;
+  /* Aplicado el @extend */
+}
+
+.button-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 11vh;
+  border-radius: 3px;
+  /* Aplicado el @extend */
+}
+
+/* ------------ MIXING ------------ */
+/* ------------ MAIN CONTAINER ------------ */
 .contenedorPadre {
   display: grid;
   grid-template-areas: "header header header header" "hero hero hero hero" "boxes boxes boxes boxes" "footer footer footer footer";
@@ -36,9 +149,9 @@ header .logo_header {
 .hero_container {
   grid-area: hero;
   display: flex;
-  align-items: center;
+  flex-flow: column wrap;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,10 +161,25 @@ header .logo_header {
 .hero_container .hero {
   width: 70%;
   text-align: center;
+  z-index: 10;
 }
 
 #hero-home {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/hero.jpg");
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-home:before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/hero.jpg");
+  background-size: cover;
+  animation: kenBurns 30s infinite;
+  z-index: 0;
 }
 
 /* ------------ CONTENIDO DEL SITIO ------------ */
@@ -64,16 +192,16 @@ header .logo_header {
 .content .boxes {
   grid-area: boxes;
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
   padding: 5vh 0px 5vh 0px;
 }
 .content .boxes .box {
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: space-between;
   width: 33vh;
   min-height: 33vh;
   background-color: #130f40;
@@ -126,6 +254,10 @@ header .logo_header {
 }
 
 /* ------------ ESTILO DE TITULOS ------------ */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 h1 {
   font-family: "Raleway", sans-serif;
   font-weight: bold;
@@ -159,66 +291,6 @@ h5 {
   font-size: 1.5vh;
 }
 
-/* ------------ BOTONES Y LINK ------------ */
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #d63031;
-  border: none;
-  border-radius: 5px;
-  color: #f5f6fa;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-}
-.button:hover {
-  background-color: #f5f6fa;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
-  color: #d63031;
-  font-weight: 600;
-}
-
-.heroButtonContainer {
-  display: flex;
-  justify-content: center;
-}
-.heroButtonContainer .button-hero {
-  background-image: url(../img/pttA.svg);
-  background-repeat: repeat;
-  background-size: 90vh;
-  margin: 1vh;
-  width: 20vh;
-  height: 6vh;
-}
-
-.button-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 11vh;
-  border-radius: 3px;
-}
-
-a:link {
-  text-decoration: none;
-  font-family: "Raleway", sans-serif;
-  font-weight: 300;
-  font-size: 1.8vh;
-  color: #f5f6fa;
-}
-a:link:visited {
-  color: #d63031;
-}
-a:link:hover {
-  color: #d63031;
-  font-weight: 400;
-}
-a:link:active {
-  color: #130f40;
-}
-
 /* ------------ ESTILOS DE FOOTER ------------ */
 footer {
   grid-area: footer;
@@ -228,11 +300,11 @@ footer {
 }
 
 .pie {
-  padding: 15px 15px 15px 15px;
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
+  padding: 15px 15px 15px 15px;
   padding: 1vh;
 }
 
@@ -256,9 +328,23 @@ footer {
   margin-bottom: 15px;
 }
 
-/* ------------ NOS HERO ------------ */
+/* ------------ NOSOSTROS HERO ------------ */
 #hero-nos {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/nosotros.jpg");
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-nos:before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/nosotros.jpg");
+  background-size: cover;
+  animation: kenBurns 30s infinite;
+  z-index: 0;
 }
 
 #boxNos {
@@ -268,7 +354,21 @@ footer {
 
 /* ------------ MENU HERO ------------ */
 #hero-menu {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/menu-hero.jpg");
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-menu:before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/menu-hero.jpg");
+  background-size: cover;
+  animation: kenBurns 30s infinite;
+  z-index: 0;
 }
 
 #menu-box {
@@ -278,7 +378,21 @@ footer {
 
 /* ------------ RESERVAS HERO ------------ */
 #hero-reservas {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/reservas.jpg");
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-reservas:before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/reservas.jpg");
+  background-size: cover;
+  animation: kenBurns 30s infinite;
+  z-index: 0;
 }
 
 #menu-box {
@@ -288,9 +402,73 @@ footer {
 
 /* ------------ CONTACTO HERO ------------ */
 #hero-contacto {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/contacto.jpg");
+  position: relative;
+  overflow: hidden;
 }
 
+#hero-contacto:before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/contacto.jpg");
+  background-size: cover;
+  animation: kenBurns 30s infinite;
+  z-index: 0;
+}
+
+/* ------------ BARRA DE REDES ------------ */
+.redes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 3vh;
+}
+
+/*  uso de LOOP (@each)  */
+.div-facebook {
+  background-color: #3b5998;
+  border-radius: 3px;
+  padding: 0.3vw;
+  margin: 0.3vh;
+}
+
+/*  uso de LOOP (@each)  */
+.div-instagram {
+  background-color: #d62976;
+  border-radius: 3px;
+  padding: 0.3vw;
+  margin: 0.3vh;
+}
+
+/*  uso de LOOP (@each)  */
+.div-youtube {
+  background-color: #FF0000;
+  border-radius: 3px;
+  padding: 0.3vw;
+  margin: 0.3vh;
+}
+
+/* ------------ KEYFRAMES ------------ */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0);
+  }
+  25% {
+    transform: scale(1.1) translate(2.5%, 2.5%);
+  }
+  50% {
+    transform: scale(1.2) translate(5%, 5%);
+  }
+  75% {
+    transform: scale(1.1) translate(2.5%, 2.5%);
+  }
+  100% {
+    transform: scale(1) translate(0);
+  }
+}
 /* ------------ MEDIA QUERRIES ------------ */
 @media (max-width: 600px) {
   .hero {

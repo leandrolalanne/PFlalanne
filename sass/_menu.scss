@@ -1,7 +1,20 @@
 @use "variables";
 /* ------------ MENU HERO ------------ */
-#hero-menu{
-    background-image: variables.$heroOverlay, url("../img/menu-hero.jpg");
+#hero-menu {
+    position: relative;
+    overflow: hidden;
+}
+#hero-menu:before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: variables.$heroOverlay, url("/img/menu-hero.jpg");
+    background-size: cover;
+    animation: kenBurns 30s infinite;
+    z-index: 0;
 }
 #menu-box{
     width: 95vh;

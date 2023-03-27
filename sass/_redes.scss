@@ -1,0 +1,20 @@
+/* ------------ BARRA DE REDES ------------ */
+.redes{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 3vh;
+}
+$redes:(
+    facebook: #3b5998,
+    instagram: #d62976,
+    youtube: #FF0000,
+);
+@each $redsocial, $colordered in $redes{ /*  uso de LOOP (@each)  */
+    .div-#{$redsocial}{
+        background-color: $colordered;
+        border-radius: 3px;
+        padding: 0.3vw;
+        margin: 0.3vh;
+    }
+}

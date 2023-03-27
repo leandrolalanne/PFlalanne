@@ -1,7 +1,20 @@
 @use "variables";
 /* ------------ RESERVAS HERO ------------ */
-#hero-reservas{
-    background-image: variables.$heroOverlay, url("../img/reservas.jpg");
+#hero-reservas {
+    position: relative;
+    overflow: hidden;
+}
+#hero-reservas:before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: variables.$heroOverlay, url("/img/reservas.jpg");
+    background-size: cover;
+    animation: kenBurns 30s infinite;
+    z-index: 0;
 }
 #menu-box{
     width: 95vw;
