@@ -63,7 +63,7 @@ min-height: 90vh;
     left: -10%;
     width: 120%;
     height: 120%;
-    background-image: variables.$heroOverlay, url("/img/hero.jpg");
+    background-image: variables.$heroOverlay, url("../img/hero.jpg");
     background-size: cover;
     animation: kenBurns 30s infinite;
     z-index: 0;
